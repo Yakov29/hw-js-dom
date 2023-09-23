@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Завдання</title>
+</head>
+<body>
+    <!-- Завдання 1: Зміна тексту кнопки на значення текстового поля -->
+    <input type="text" id="text-field" placeholder="Введіть текст">
+    <button id="change-button">Змінити текст кнопки</button>
+
+    <!-- Завдання 2: Зміна шляху до зображення -->
+    <img id="image" src="початковий_шлях_до_зображення.jpg" alt="Початковий опис зображення">
+    <button id="change-image-button">Змінити зображення</button>
+
+    <!-- Завдання 3: Зміна URL-адреси посилання та додавання атрибуту "alt" до зображення -->
+    <a href="початкова_URL">Посилання</a>
+    <img id="link-image" src="початковий_шлях_до_зображення.jpg">
+
+    <!-- Завдання 4: Зміна вмісту першого елемента списку -->
+    <ul>
+        <li id="list-item">Пункт списку 1</li>
+        <li>Пункт списку 2</li>
+        <li>Пункт списку 3</li>
+    </ul>
+
+    <script>
+        // Завдання 1
+        const textField = document.getElementById('text-field');
+        const changeButton = document.getElementById('change-button');
+
+        changeButton.addEventListener('click', function() {
+            const buttonText = textField.value;
+            changeButton.textContent = buttonText;
+        });
+
+        // Завдання 2
+        const image = document.getElementById('image');
+        const changeImageButton = document.getElementById('change-image-button');
+
+        changeImageButton.addEventListener('click', function() {
+            image.src = 'новий_шлях_до_зображення.jpg';
+        });
+
+        // Завдання 3
+        const link = document.querySelector('a');
+        const linkImage = document.getElementById('link-image');
+
+        link.href = 'нова_URL';
+        linkImage.alt = 'Новий опис зображення';
+
+        // Завдання 4
+        const listItem = document.getElementById('list-item');
+        listItem.textContent = 'Новий текст для першого пункту списку';
+    </script>
+</body>
+</html>
