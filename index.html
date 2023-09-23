@@ -2,57 +2,130 @@
 <html>
 <head>
     <title>Завдання</title>
+    <style>
+        /* Стилі для завдання 1 */
+        .item {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Завдання 1: Зміна тексту кнопки на значення текстового поля -->
-    <input type="text" id="text-field" placeholder="Введіть текст">
-    <button id="change-button">Змінити текст кнопки</button>
-
-    <!-- Завдання 2: Зміна шляху до зображення -->
-    <img id="image" src="початковий_шлях_до_зображення.jpg" alt="Початковий опис зображення">
-    <button id="change-image-button">Змінити зображення</button>
-
-    <!-- Завдання 3: Зміна URL-адреси посилання та додавання атрибуту "alt" до зображення -->
-    <a href="початкова_URL">Посилання</a>
-    <img id="link-image" src="початковий_шлях_до_зображення.jpg">
-
-    <!-- Завдання 4: Зміна вмісту першого елемента списку -->
-    <ul>
-        <li id="list-item">Пункт списку 1</li>
-        <li>Пункт списку 2</li>
-        <li>Пункт списку 3</li>
+    <!-- Завдання 1 -->
+    <ul id="categories">
+        <li class="item">
+            <h2>Тварини</h2>
+            <ul>
+                <li>Кіт</li>
+                <li>Хом'як</li>
+                <li>Кінь</li>
+                <li>Папуга</li>
+            </ul>
+        </li>
+        <li class="item">
+            <h2>Продукти</h2>
+            <ul>
+                <li>Хліб</li>
+                <li>Петрушка</li>
+                <li>Сир</li>
+            </ul>
+        </li>
+        <li class="item">
+            <h2>Технології</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>React</li>
+                <li>Node</li>
+            </ul>
+        </li>
     </ul>
+
+    <!-- Завдання 2 -->
+    <ul id="ingredients"></ul>
+
+    <!-- Завдання 3 -->
+    <ul id="gallery"></ul>
+
+    <!-- Завдання 4 -->
+    <div id="counter">
+        <button type="button" data-action="decrement">-1</button>
+        <span id="value">0</span>
+        <button type="button" data-action="increment">+1</button>
+    </div>
 
     <script>
         // Завдання 1
-        const textField = document.getElementById('text-field');
-        const changeButton = document.getElementById('change-button');
+        const categories = document.querySelectorAll('.item');
 
-        changeButton.addEventListener('click', function() {
-            const buttonText = textField.value;
-            changeButton.textContent = buttonText;
+        console.log(`У списку ${categories.length} категорії.`);
+
+        categories.forEach(category => {
+            const categoryName = category.querySelector('h2').textContent;
+            const categoryItems = category.querySelectorAll('ul li').length;
+
+            console.log(`Категорія: ${categoryName}`);
+            console.log(`Кількість елементів: ${categoryItems}`);
         });
 
         // Завдання 2
-        const image = document.getElementById('image');
-        const changeImageButton = document.getElementById('change-image-button');
+        const ingredients = [
+            'Картопля',
+            'Гриби',
+            'Часник',
+            'Помідори',
+            'Зелень',
+            'Приправи',
+        ];
 
-        changeImageButton.addEventListener('click', function() {
-            image.src = 'новий_шлях_до_зображення.jpg';
+        const ulIngredients = document.getElementById('ingredients');
+
+        ingredients.forEach(ingredient => {
+            const li = document.createElement('li');
+            li.textContent = ingredient;
+            ulIngredients.appendChild(li);
         });
 
         // Завдання 3
-        const link = document.querySelector('a');
-        const linkImage = document.getElementById('link-image');
+        const images = [
+            {
+                url: 'https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+                alt: 'White and Black Long Fur Cat',
+            },
+            {
+                url: 'https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+                alt: 'Orange and White Koi Fish Near Yellow Koi Fish',
+            },
+            {
+                url: 'https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
+                alt: 'Group of Horses Running',
+            },
+        ];
 
-        link.href = 'нова_URL';
-        linkImage.alt = 'Новий опис зображення';
+        const ulGallery = document.getElementById('gallery');
+
+        images.forEach(image => {
+            const li = document.createElement('li');
+            li.insertAdjacentHTML('beforeend', `<img src="${image.url}" alt="${image.alt}">`);
+            ulGallery.appendChild(li);
+        });
 
         // Завдання 4
-        const listItem = document.getElementById('list-item');
-        listItem.textContent = 'Новий текст для першого пункту списку';
+        const counterValue = document.getElementById('value');
+        let value = 0;
 
-        
+        const incrementButton = document.querySelector('[data-action="increment"]');
+        const decrementButton = document.querySelector('[data-action="decrement"]');
+
+        incrementButton.addEventListener('click', () => {
+            value++;
+            counterValue.textContent = value;
+        });
+
+        decrementButton.addEventListener('click', () => {
+            value--;
+            counterValue.textContent = value;
+        });
     </script>
 </body>
 </html>
