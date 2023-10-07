@@ -1,137 +1,68 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Завдання</title>
-    <style>
-      /* Стилі для завдання 1 */
-      .item {
-        margin-bottom: 20px;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Завдання 1 -->
-    <ul id="categories">
-      <li class="item">
-        <h2>Тварини</h2>
-        <ul>
-          <li>Кіт</li>
-          <li>Хом'як</li>
-          <li>Кінь</li>
-          <li>Папуга</li>
-        </ul>
-      </li>
-      <li class="item">
-        <h2>Продукти</h2>
-        <ul>
-          <li>Хліб</li>
-          <li>Петрушка</li>
-          <li>Сир</li>
-        </ul>
-      </li>
-      <li class="item">
-        <h2>Технології</h2>
-        <ul>
-          <li>HTML</li>
-          <li>CSS</li>
-          <li>JavaScript</li>
-          <li>React</li>
-          <li>Node</li>
-        </ul>
-      </li>
+<head>
+    <title>Зміна тексту, атрибутів та вмісту</title>
+</head>
+<body>
+    <!-- Зміна тексту на кнопці з використанням значення текстового поля -->
+    <input type="text" id="text-input" placeholder="Введіть текст">
+    <button id="change-button">Змінити текст кнопки</button>
+
+    <!-- Зміна атрибута "src" зображення -->
+    <br>
+    <img id="my-image" src="old-image.jpg" alt="Старе зображення">
+    <button id="change-image-button">Змінити зображення</button>
+
+    <!-- Зміна атрибута "href" посилання та додавання атрибута "alt" до зображення -->
+    <br>
+    <a id="my-link" href="old-url.html">Старе посилання</a>
+    <img id="my-image2" src="old-image.jpg" alt="Старе зображення">
+    <button id="change-link-button">Змінити посилання та опис зображення</button>
+
+    <!-- Зміна вмісту першого елемента списку -->
+    <br>
+    <ul id="my-list">
+        <li>Елемент 1</li>
+        <li>Елемент 2</li>
+        <li>Елемент 3</li>
     </ul>
-
-    <!-- Завдання 2 -->
-    <ul id="ingredients"></ul>
-
-    <!-- Завдання 3 -->
-    <ul id="gallery"></ul>
-
-    <!-- Завдання 4 -->
-    <div id="counter">
-      <button type="button" data-action="decrement">-1</button>
-      <span id="value">0</span>
-      <button type="button" data-action="increment">+1</button>
-    </div>
+    <button id="change-list-item-button">Змінити перший елемент списку</button>
 
     <script>
-      // Завдання 1
-      const categories = document.querySelectorAll(".item");
+        // Зміна тексту на кнопці з використанням значення текстового поля
+        const button = document.getElementById("change-button");
+        const textInput = document.getElementById("text-input");
 
-      console.log(`У списку ${categories.length} категорії.`);
+        button.addEventListener("click", () => {
+            button.textContent = textInput.value;
+        });
 
-      categories.forEach((category) => {
-        const categoryName = category.querySelector("h2").textContent;
-        const categoryItems = category.querySelectorAll("ul li").length;
+        // Зміна атрибута "src" зображення
+        const image = document.getElementById("my-image");
+        const imageChangeButton = document.getElementById("change-image-button");
 
-        console.log(`Категорія: ${categoryName}`);
-        console.log(`Кількість елементів: ${categoryItems}`);
-      });
+        imageChangeButton.addEventListener("click", () => {
+            image.src = "new-image.jpg";
+        });
 
-      // Завдання 2
-      const ingredients = [
-        "Картопля",
-        "Гриби",
-        "Часник",
-        "Помідори",
-        "Зелень",
-        "Приправи",
-      ];
+        // Зміна атрибута "href" посилання та додавання атрибута "alt" до зображення
+        const link = document.getElementById("my-link");
+        const image2 = document.getElementById("my-image2");
+        const linkChangeButton = document.getElementById("change-link-button");
 
-      const ulIngredients = document.getElementById("ingredients");
+        linkChangeButton.addEventListener("click", () => {
+            link.href = "new-url.html";
+            image2.alt = "Нове зображення";
+        });
 
-      ingredients.forEach((ingredient) => {
-        const li = document.createElement("li");
-        li.textContent = ingredient;
-        ulIngredients.appendChild(li);
-      });
+        // Зміна вмісту першого елемента списку
+        const list = document.getElementById("my-list");
+        const firstItem = list.querySelector("li:first-child");
+        const listItemChangeButton = document.getElementById("change-list-item-button");
 
-      // Завдання 3
-      const images = [
-        {
-          url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          alt: "White and Black Long Fur Cat",
-        },
-        {
-          url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          alt: "Orange and White Koi Fish Near Yellow Koi Fish",
-        },
-        {
-          url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-          alt: "Group of Horses Running",
-        },
-      ];
-
-      const ulGallery = document.getElementById("gallery");
-
-      const liElements = images.map((image) => {
-        const li = document.createElement("li");
-        li.innerHTML = `<img src="${image.url}" alt="${image.alt}">`;
-        return li;
-      });
-
-      ulGallery.append(...liElements);
-
-      // Завдання 4
-      const counterValue = document.getElementById("value");
-      let value = 0;
-
-      const incrementButton = document.querySelector(
-        '[data-action="increment"]'
-      );
-      const decrementButton = document.querySelector(
-        '[data-action="decrement"]'
-      );
-
-      incrementButton.addEventListener("click", () => {
-        value++;
-        counterValue.textContent = value;
-      });
-
-      decrementButton.addEventListener("click", () => {
-        value--;
-        counterValue.textContent = value;
-      });
+        listItemChangeButton.addEventListener("click", () => {
+            firstItem.textContent = "Новий текст для першого елемента";
+        });
     </script>
-  </body>
+</body>
 </html>
