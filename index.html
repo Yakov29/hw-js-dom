@@ -4,22 +4,22 @@
     <title>Зміна тексту, атрибутів та вмісту</title>
 </head>
 <body>
-    <!-- Зміна тексту на кнопці з використанням значення текстового поля -->
+   
     <input type="text" id="text-input" placeholder="Введіть текст">
     <button id="change-button">Змінити текст кнопки</button>
 
-    <!-- Зміна атрибута "src" зображення -->
+   
     <br>
     <img id="my-image" src="old-image.jpg" alt="Старе зображення">
     <button id="change-image-button">Змінити зображення</button>
 
-    <!-- Зміна атрибута "href" посилання та додавання атрибута "alt" до зображення -->
+ 
     <br>
     <a id="my-link" href="old-url.html">Старе посилання</a>
     <img id="my-image2" src="old-image.jpg" alt="Старе зображення">
     <button id="change-link-button">Змінити посилання та опис зображення</button>
 
-    <!-- Зміна вмісту першого елемента списку -->
+   
     <br>
     <ul id="my-list">
         <li>Елемент 1</li>
@@ -29,7 +29,7 @@
     <button id="change-list-item-button">Змінити перший елемент списку</button>
 
     <script>
-        // Зміна тексту на кнопці з використанням значення текстового поля
+        
         const button = document.getElementById("change-button");
         const textInput = document.getElementById("text-input");
 
@@ -37,7 +37,7 @@
             button.textContent = textInput.value;
         });
 
-        // Зміна атрибута "src" зображення
+      
         const image = document.getElementById("my-image");
         const imageChangeButton = document.getElementById("change-image-button");
 
@@ -45,7 +45,7 @@
             image.src = "new-image.jpg";
         });
 
-        // Зміна атрибута "href" посилання та додавання атрибута "alt" до зображення
+      
         const link = document.getElementById("my-link");
         const image2 = document.getElementById("my-image2");
         const linkChangeButton = document.getElementById("change-link-button");
@@ -55,7 +55,7 @@
             image2.alt = "Нове зображення";
         });
 
-        // Зміна вмісту першого елемента списку
+      
         const list = document.getElementById("my-list");
         const firstItem = list.querySelector("li:first-child");
         const listItemChangeButton = document.getElementById("change-list-item-button");
